@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
   def index
+    @user = User.find(current_user.id)
+    @users = User.all
   end
 
   def show
@@ -8,6 +10,9 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    unless @user == current_user
+      redirect_to user_path(current_user.id)
+    end
   end
   
   def update
