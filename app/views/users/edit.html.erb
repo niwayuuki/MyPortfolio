@@ -1,2 +1,24 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+<div class="container">
+  <div class= "row">
+    <div class="mx-auto">
+      <h2>User info</h2>
+      <% if @user.errors.any? %>
+      <h2><%= @user.errors.count %>error prohibited this obj from being saved:</h2>
+      <ul>
+        <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+        <% end %> 
+      </ul>
+      <% end %>
+      <%= form_with model:@user, local:true do |f| %>
+        <p>Name</p>
+        <%= f.text_field :name, autofocus: true %>
+        <p>Image</p>
+        <%= f.attachment_field :profile_image %>
+        <p>Introduction</p>
+        <%= f.text_area :introduction %>
+        <div><%= f.submit "Update User", class: "btn btn-secondary" %></div>
+      <% end %>
+    </div>
+  </div>
+</div>
