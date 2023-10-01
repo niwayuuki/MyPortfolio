@@ -9,6 +9,28 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav ml-auto">
+          <% if user_signed_in? %>
+          <li>
+             <a class="nav-link text-light" href="/users/<%= current_user.id %>">
+              <i class="fas fa-home"></i>Home
+            </a>
+          </li>
+          <li>
+            <a class="nav-link text-light" href="/users">
+              <i class="fas fa-users"></i>Users
+            </a>
+          </li>
+          <li>
+            <a class="nav-link text-light" href="/movies">
+              <i class="fas fa-movie-open"></i>Movies
+            </a>
+          </li>
+          <li>
+            <a class="nav-link text-light" rel="nofollow" data-method="delete" href="/users/sign_out">
+              <i class="fas fa-sign-out-alt"></i>Log out
+            </a>
+          </li>
+          <% else %>
           <li>
             <a class="nav-link text-light" href="/">
               <i class="fas fa-home"></i>Home
@@ -29,6 +51,7 @@
               <i class="fas fa-sign-in-alt"></i>Log in
             </a>
           </li>
+          <% end %>
         </ul>
       </div>
     </div>
