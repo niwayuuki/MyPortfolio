@@ -33,7 +33,6 @@
       </div>
       <div class='col-md-8 offset-md-1'>
         <h2>Movies</h2>
-        <!-- 投稿した映画一覧表示を作成する。 -->
         <table class='table table-hover table-inverse'>
           <thead>
             <tr>
@@ -43,7 +42,24 @@
               <th colspan="3"></th>
             </tr>
           </thead>
-          <tbody></tbody>
+          <tbody>
+            <% @movies.each do |movie| %>
+            <tr>
+              <th>
+                <%= link_to user_path(@user.id) do %>
+                <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "default-image.jpg" %>
+                <% end %>
+              </th>
+              <th>
+                <%= link_to movie_path(movie.id) do %>
+                <%= movie.title %>
+                <% end %>
+              </th>
+              <th><%= movie.body %></th>
+              <th></th>
+            </tr>
+            <% end %>
+          </tbody>
         </table>
       </div>
     </div>

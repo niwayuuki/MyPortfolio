@@ -1,5 +1,4 @@
 <main>
-  <p id="notice"><%= flash[:notice] %></p>
   <div class='container px-5 px-sm-0'>
     <div class='row'>
       <div class='col-md-3'>
@@ -23,7 +22,7 @@
           <% end %>
         </div>
         <h2 class="mt-3">New movie</h2>
-        <%= form_with model: @movie, local:true do |f| %>
+        <%= form_with model: @movie, url:'/movies', local:true do |f| %>
         <p>Title</p>
         <%= f.text_field :title %>
         <p>Opinion</p>

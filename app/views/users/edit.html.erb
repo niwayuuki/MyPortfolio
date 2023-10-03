@@ -3,12 +3,21 @@
     <div class="mx-auto">
       <h2>User info</h2>
       <% if @user.errors.any? %>
-      <h2><%= @user.errors.count %>error prohibited this obj from being saved:</h2>
+      <% if @user.errors.count == 1 %>
+      <h2><%= @user.errors.count %> error prohibited this obj from being saved:</h2>
       <ul>
         <% @user.errors.full_messages.each do |message| %>
         <li><%= message %></li>
         <% end %> 
       </ul>
+      <% else %>
+      <h2><%= @user.errors.count %> errors prohibited this obj from being saved:</h2>
+      <ul>
+        <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+        <% end %> 
+      </ul>
+      <% end %>
       <% end %>
       <%= form_with model:@user, local:true do |f| %>
         <p>Name</p>
