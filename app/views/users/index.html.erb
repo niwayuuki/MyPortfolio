@@ -38,9 +38,6 @@
               <th>image</th>
               <th>name</th>
               <th></th>
-              <th></th>
-              <th></th>
-              <th></th>
             </tr>
           </thead>
           <tbody>
@@ -48,9 +45,6 @@
             <tr>
               <th><%= attachment_image_tag user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "default-image.jpg" %></th>
               <th><%= user.name %></th>
-              <th></th>
-              <th></th>
-              <th></th>
               <th><%= link_to "Show", user_path(user.id) %></th>
             </tr>
             <% end %>
