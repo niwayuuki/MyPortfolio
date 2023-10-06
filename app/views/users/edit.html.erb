@@ -4,7 +4,7 @@
       <h2>User info</h2>
       <% if @user.errors.any? %>
       <% if @user.errors.count == 1 %>
-      <h2><%= @user.errors.count %> error prohibited this obj from being saved:</h2>
+      <h2>1 error prohibited this obj from being saved:</h2>
       <ul>
         <% @user.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -20,13 +20,13 @@
       <% end %>
       <% end %>
       <%= form_with model:@user, local:true do |f| %>
-        <p>Name</p>
-        <%= f.text_field :name, autofocus: true %>
-        <p>Image</p>
-        <%= f.attachment_field :profile_image %>
-        <p>Introduction</p>
-        <%= f.text_area :introduction %>
-        <div><%= f.submit "Update User", class: "btn btn-secondary" %></div>
+      <p>Name</p>
+      <%= f.text_field :name, autofocus: true %>
+      <p>Image</p>
+      <%= f.attachment_field :profile_image %>
+      <p>Introduction</p>
+      <%= f.text_area :introduction %>
+      <div><%= f.submit "Update User", class: "btn btn-secondary" %></div>
       <% end %>
     </div>
   </div>

@@ -1,0 +1,32 @@
+<div class="container">
+  <div class= "row">
+    <div class="mx-auto">
+      <h2>Editing Movie</h2>
+      <% if @movie.errors.any? %>
+      <% if @movie.errors.count == 1 %>
+      <h2>1 error prohibited this obj from being saved:</h2>
+      <ul>
+        <% @movie.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+        <% end %> 
+      </ul>
+      <% else %>
+      <h2><%= @movie.errors.count %> errors prohibited this obj from being saved:</h2>
+      <ul>
+        <% @movie.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+        <% end %> 
+      </ul>
+      <% end %>
+      <% end %>
+      <%= form_with model:@movie, local:true do |f| %>
+      <p>Title</p>
+      <%= f.text_field :title, autofocus: true %>
+      <p>Opinion</p>
+      <%= f.text_area :body %>
+      <div><%= f.submit "Update Movie", class: "btn btn-success" %></div>
+      <% end %>
+      <%= link_to "Show", movie_path(@movie.id) %> | <%= link_to "Back", "/movies" %>
+    </div>
+  </div>
+</div>
