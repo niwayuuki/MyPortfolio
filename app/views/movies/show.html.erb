@@ -70,6 +70,36 @@
           </tbody>
         </table>
         <% end %>
+        <% unless @movie.post_comments.count == 0 %>
+        <h2>Comments</h2>
+        <table class='table table-hover table-inverse'>
+          <thead>
+            <tr>
+              <th>User</th>
+              <th>Comment</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @movie.post_comments.each do |post_comment| %>
+            <tr>
+              <th><%= link_to post_comment.user.name, user_path(post_comment.user.id) %></th>
+              <th><%= post_comment.comment %></th>
+              <% if (post_comment.user == current_user) || (@movie.user == current_user) %>
+              <th><%= link_to "Destroy", movie_post_comment_path(post_comment.movie, post_comment), method: :delete, "data-confirm" => "本当に消しますか？", class: "btn btn-danger" %></th>
+              <% else %>
+              <th></th>
+              <% end %>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+        <% end %>
+        <h2>New comment</h2>
+        <%= form_with(model:[@movie, @post_comment]) do |f| %>
+        <%= f.text_area :comment  %>
+        <div><%= f.submit "Create Comment", class: "btn btn-success" %></div>
+        <% end %>
       </div>
     </div>
   </div>

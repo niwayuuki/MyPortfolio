@@ -21,6 +21,7 @@ class MoviesController < ApplicationController
   def show
     @movie_new = Movie.new
     @movie = Movie.find(params[:id])
+    @post_comment = PostComment.new
   end
   
   def edit
