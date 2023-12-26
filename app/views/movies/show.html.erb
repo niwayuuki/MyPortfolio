@@ -70,7 +70,7 @@
           </tbody>
         </table>
         <% end %>
-        <% unless @movie.post_comments.count == 0 %>
+        <% unless @post_comments.count == 0 %>
         <h2>Comments</h2>
         <table class='table table-hover table-inverse'>
           <thead>
@@ -81,7 +81,7 @@
             </tr>
           </thead>
           <tbody>
-            <% @movie.post_comments.each do |post_comment| %>
+            <% @post_comments.each do |post_comment| %>
             <tr>
               <th><%= link_to post_comment.user.name, user_path(post_comment.user.id) %></th>
               <th><%= post_comment.comment %></th>
@@ -94,6 +94,7 @@
             <% end %>
           </tbody>
         </table>
+        <%= paginate @post_comments %>
         <% end %>
         <h2>New comment</h2>
         <%= form_with(model:[@movie, @post_comment]) do |f| %>

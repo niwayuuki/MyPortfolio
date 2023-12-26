@@ -15,13 +15,14 @@ class MoviesController < ApplicationController
   def index
     @user = User.find(current_user.id)
     @movie = Movie.new
-    @movies = Movie.all
+    @movies = Movie.page(params[:page]).reverse_order
   end
 
   def show
     @movie_new = Movie.new
     @movie = Movie.find(params[:id])
     @post_comment = PostComment.new
+    @post_comments = @movie.post_comments.page(params[:page]).reverse_order
   end
   
   def edit

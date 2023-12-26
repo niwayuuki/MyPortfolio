@@ -1,14 +1,14 @@
 class UsersController < ApplicationController
   def index
     @user = User.find(current_user.id)
-    @users = User.all
+    @users = User.page(params[:page]).reverse_order
     @movie = Movie.new
   end
 
   def show
      @user = User.find(params[:id])
      @movie = Movie.new
-     @movies = @user.movies
+     @movies = @user.movies.page(params[:page]).reverse_order
   end
 
   def edit

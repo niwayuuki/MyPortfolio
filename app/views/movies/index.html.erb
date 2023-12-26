@@ -75,7 +75,9 @@
               </th>
               <th><%= movie.body %></th>
               <th>
-                <% if movie.post_comments.count == 1 %>
+                <% if movie.post_comments.count == 0 %>
+                <%= "#{movie.post_comments.count} comments" %>
+                <% elsif movie.post_comments.count == 1 %>
                 <%= link_to "#{movie.post_comments.count} comment", movie_path(movie.id) %>
                 <% else %>
                 <%= link_to "#{movie.post_comments.count} comments", movie_path(movie.id) %>
@@ -86,6 +88,7 @@
             <% end %>
           </tbody>
         </table>
+        <%= paginate @movies %>
       </div>
     </div>
   </div>
