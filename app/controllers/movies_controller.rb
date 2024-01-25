@@ -7,7 +7,7 @@ class MoviesController < ApplicationController
       redirect_to movie_path(@movie.id)
     else
       @user = User.find(current_user.id)
-      @movies = Movie.all
+      @movies = Movie.page(params[:page]).reverse_order
       render :index
     end
   end

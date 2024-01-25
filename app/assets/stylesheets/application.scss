@@ -16,3 +16,20 @@
 @import "bootstrap";
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+main {
+  height: 900px;
+  background-color: white;
+}
+
+.home {
+  background-image: url(img/movie_top.jpg);
+  background-size: cover;
+  background-position: top;
+}
